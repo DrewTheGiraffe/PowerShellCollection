@@ -1,4 +1,4 @@
-# All scripts easily invocable remotely
+# All scripts invocable remotely
 ## Windows (elevated):
 ```
 Powershell.exe -executionpolicy Bypass -Command "iex (irm 'https://raw.githubusercontent.com/DrewTheGiraffe/PowerShellCollection/refs/heads/main/<script_name>.ps1')"
