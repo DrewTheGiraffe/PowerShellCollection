@@ -1,13 +1,7 @@
-# All scripts invocable remotely
+# How to invoke update-windows.ps1 remotely
 ## Windows (elevated):
 ```
-Powershell.exe -executionpolicy Bypass -Command "iex (irm 'https://raw.githubusercontent.com/DrewTheGiraffe/PowerShellCollection/refs/heads/main/<script_name>.ps1')"
+$s = (iwr -Uri 'https://raw.githubusercontent.com/DrewTheGiraffe/PowerShellCollection/refs/heads/main/update-windows.ps1').Content.TrimStart([char]0xFEFF); iex $s
 ```
-## macOS
-```
-if ! command -v pwsh >/dev/null 2>&1; then brew install --cask powershell fi pwsh -ExecutionPolicy Bypass -Command "iex (irm 'https://raw.githubusercontent.com/DrewTheGiraffe/PowerShellCollection/refs/heads/main/<script_name>.ps1')"
-```
-## Linux (Debian)
-```
-if ! command -v pwsh >/dev/null 2>&1; then sudo apt-get update && sudo apt-get install -y wget . /etc/os-release wget -q https://packages.microsoft.com/config/debian/$VERSION_ID/packages-microsoft-prod.deb -O packages-microsoft-prod.deb sudo dpkg -i packages-microsoft-prod.deb rm packages-microsoft-prod.deb sudo apt-get update && sudo apt-get install -y powershell fi pwsh -ExecutionPolicy Bypass -Command "iex (irm 'https://raw.githubusercontent.com/DrewTheGiraffe/PowerShellCollection/refs/heads/main/<script_name>.ps1')"
-```
+### Note: Always inspect scripts before executing, especially when running as Administrator. 
+### Warning: For educational / Personal use, I do not take any responsibility for damages to systems, networks, etc. Use at your own risk.
